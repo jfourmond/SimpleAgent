@@ -17,10 +17,13 @@ public class Env3 implements Environment {
 	
 	@Override
 	public Result giveResult(Action A) {
-		if(A == lastAction)
+		if(A == lastAction) {
+			lastAction = A;
 			return Result.WHITE;
-		else
+		} else {
+			lastAction = A;
 			return Result.GREEN;
+		}
 	}
 
 }

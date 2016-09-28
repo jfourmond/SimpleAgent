@@ -49,7 +49,6 @@ public class Agent {
 					if(!actionsMemorized.contains(a)) action = a;
 				}
 			} else {
-				InteractionComposite IC = lastInteractionComposite();
 				List<Action> actionsNotUsed = actionsNotUsedLast();
 				if(actionsNotUsed.isEmpty()) {
 					action = getLastPositiveAction();
@@ -57,7 +56,7 @@ public class Agent {
 					System.out.println("YOLO");
 				}
 				// TODO Trouver interaction qui fera peut-être augmenter la valence
-				// en cherchant une interaction complexe semblable sinon
+				// en cherchant une interaction composite semblable sinon
 				// tenter autre chose
 				
 			}
