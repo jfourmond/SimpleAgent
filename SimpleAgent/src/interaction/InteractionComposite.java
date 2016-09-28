@@ -1,8 +1,5 @@
 package interaction;
 
-import action.Action;
-import result.Result;
-
 public class InteractionComposite {
 	private Interaction preInteraction;
 	private Interaction postInteraction;
@@ -15,14 +12,14 @@ public class InteractionComposite {
 		preInteraction = null;
 		postInteraction = null;
 		
-		value = 0;
+		calculateValue();
 		weight = 0;
 	}
 	
 	public InteractionComposite(Interaction preInteraction) {
 		this.preInteraction = preInteraction;
 		
-		value = preInteraction.getValue();
+		calculateValue();
 		weight = 0;
 	}
 	
@@ -38,10 +35,12 @@ public class InteractionComposite {
 	//	SETTERS
 	public void setPreInteraction(Interaction preInteraction) {
 		this.preInteraction = preInteraction;
+		calculateValue();
 	}
 	
 	public void setPostInteraction(Interaction postInteraction) {
 		this.postInteraction = postInteraction;
+		calculateValue();
 	}
 	
 	public void setValue(int value) { this.value = value; }
@@ -53,10 +52,23 @@ public class InteractionComposite {
 	
 	public boolean hasPostInteraction() { return postInteraction != null; }
 	
+	public void calculateValue() {
+		if(preInteraction != null && postInteraction != null)
+			value = preInteraction.getValue() + postInteraction.getValue();
+		else if(preInteraction != null && postInteraction == null)
+			value = preInteraction.getValue();
+		else if(preInteraction == null && postInteraction != null)
+			value = postInteraction.getValue();
+		else if(preInteraction == null && postInteraction == null)
+			value = 0;
+	}
+	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		StringBuilder ch = new StringBuilder();
+		ch.append(value + "\t");
+		ch.append("[ " + preInteraction + " , " + postInteraction + " ]");
+		return ch.toString();
 	}
 	
 	@Override

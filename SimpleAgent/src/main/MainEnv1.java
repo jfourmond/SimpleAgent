@@ -29,8 +29,7 @@ public class MainEnv1 {
 			
 			cp.motivate(interaction);
 			
-			if(!agent.hasMemorized(interaction))
-				agent.memorize(interaction);
+			agent.memorize(interaction);
 			
 			System.out.println(interaction);
 			agent.setCycle(i);

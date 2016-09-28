@@ -60,7 +60,7 @@ public class Interaction {
 		StringBuilder ch = new StringBuilder();
 		ch.append(action + "\t");
 		ch.append(result + "\t");
-		ch.append(value + "\n");
+		ch.append(value);
 		return ch.toString();
 	}
 }
