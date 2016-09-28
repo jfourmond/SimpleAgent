@@ -3,34 +3,37 @@ package interaction;
 import action.Action;
 import result.Result;
 
-public class InteractionComposite extends Interaction {
+public class InteractionComposite {
 	private Interaction preInteraction;
 	private Interaction postInteraction;
 	
+	private int value;
+	private int weight;
+	
 	//	CONSTRUCTEURS
 	public InteractionComposite() {
-		super();
 		preInteraction = null;
 		postInteraction = null;
-	}
-	
-	public InteractionComposite(Action action, Result result) {
-		super(action, result);
 		
-		preInteraction = null;
-		postInteraction = null;
+		value = 0;
+		weight = 0;
 	}
 	
 	public InteractionComposite(Interaction preInteraction) {
-		super();
-		
 		this.preInteraction = preInteraction;
+		
+		value = preInteraction.getValue();
+		weight = 0;
 	}
 	
 	//	GETTERS
 	public Interaction getPreInteraction() { return preInteraction; }
 	
 	public Interaction getPostInteraction() { return postInteraction; }
+	
+	public int getValue() { return value; }
+	
+	public int getWeight() { return weight; }
 	
 	//	SETTERS
 	public void setPreInteraction(Interaction preInteraction) {
@@ -41,7 +44,15 @@ public class InteractionComposite extends Interaction {
 		this.postInteraction = postInteraction;
 	}
 	
+	public void setValue(int value) { this.value = value; }
+	
+	public void setWeight(int weight) { this.weight = weight; }
+	
 	// METHODES
+	public boolean hasPreInteraction() { return preInteraction != null; }
+	
+	public boolean hasPostInteraction() { return postInteraction != null; }
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

@@ -57,10 +57,10 @@ public class Interaction {
 	
 	@Override
 	public String toString() {
-		StringBuilder ch = new StringBuilder("Interaction : \n");
-		ch.append("\t" + action + "\n");
-		ch.append("\t" + result + "\n");
-		ch.append("\tValue : " + value + "\n");
+		StringBuilder ch = new StringBuilder();
+		ch.append(action + "\t");
+		ch.append(result + "\t");
+		ch.append(value + "\n");
 		return ch.toString();
 	}
 }
