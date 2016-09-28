@@ -26,8 +26,8 @@ public class Main {
 		Environment env = new Env1();	// Env2();		// Env3();
 		Coupling cp = new Coupling1();	// Coupling2;	// Coupling 3;
 		
-		Result result = new Result();
-		Action action = new Action();
+		Result result = null;
+		Action action = null;
 		Interaction interaction;
 		
 		for(int i=0 ; i<10 ; i++) {

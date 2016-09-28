@@ -2,7 +2,6 @@ package environment;
 
 import action.Action;
 import result.Result;
-import result.Results;
 
 /**
  * Second environnement
@@ -12,11 +11,11 @@ import result.Results;
 public class Env2 implements Environment{
 	@Override
 	public Result giveResult(Action A) {
-		switch(A.getAction()) {
+		switch(A) {
 			case CIRCLE:
-				return new Result(Results.WHITE);
+				return Result.WHITE;
 			case TRIANGLE:
-				return new Result(Results.GREEN);
+				return Result.GREEN;
 			default:
 				return null;
 		}

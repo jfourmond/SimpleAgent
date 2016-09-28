@@ -2,7 +2,6 @@ package environment;
 
 import action.Action;
 import result.Result;
-import result.Results;
 
 
 /**
@@ -18,10 +17,10 @@ public class Env3 implements Environment {
 	
 	@Override
 	public Result giveResult(Action A) {
-		if(A.equals(lastAction))
-			return new Result(Results.WHITE);
+		if(A == lastAction)
+			return Result.WHITE;
 		else
-			return new Result(Results.GREEN);
+			return Result.GREEN;
 	}
 
 }

@@ -1,8 +1,8 @@
 package coupling;
 
-import action.Actions;
+import action.Action;
 import interaction.Interaction;
-import result.Results;
+import result.Result;
 
 /**
  * Système motivationnel 2
@@ -12,15 +12,15 @@ import result.Results;
 public class Coupling2 implements Coupling {
 	@Override
 	public void motivate(Interaction interaction) {
-		Actions action = interaction.getAction().getAction();
-		Results result = interaction.getResult().getResult();
+		Action action = interaction.getAction();
+		Result result = interaction.getResult();
 		
 		int value = 0;
 		
-		if(action == Actions.TRIANGLE && result == Results.WHITE) value = -1;
-		else if(action == Actions.TRIANGLE && result == Results.GREEN) value = -1;
-		else if(action == Actions.CIRCLE && result == Results.WHITE) value = 1;
-		else if(action == Actions.CIRCLE && result == Results.GREEN) value = 1;
+		if(action == Action.TRIANGLE && result == Result.WHITE) value = -1;
+		else if(action == Action.TRIANGLE && result == Result.GREEN) value = -1;
+		else if(action == Action.CIRCLE && result == Result.WHITE) value = 1;
+		else if(action == Action.CIRCLE && result == Result.GREEN) value = 1;
 		
 		interaction.setValue(value);
 	}

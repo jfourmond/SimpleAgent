@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import action.Action;
-import action.Actions;
 import interaction.Interaction;
 import result.Result;
 
@@ -25,16 +24,16 @@ public class Agent {
 	
 	//	METHODES
 	public Action chooseAction(Result result) {
-		Actions[] actions = Actions.values();
-		Actions action = null;
-		if(result.getResult() == null) {
+		Action[] actions = Action.values();
+		Action action = null;
+		if(result == null) {
 			// Teste de la première action
 			action = actions[0];
 		} else {
 			// Tester le reste des actions
-			Set<Actions> actionsMemorized = actionMemorized();
+			Set<Action> actionsMemorized = actionMemorized();
 			if(actionsMemorized.size() < actions.length) {
-				for(Actions a : actions) {
+				for(Action a : actions) {
 					if(!actionsMemorized.contains(a)) action = a;
 				}
 			} else {
@@ -44,7 +43,7 @@ public class Agent {
 					return bestInteraction.getAction();
 			}
 		}
-		return new Action(action);
+		return action;
 	}
 	
 	/**
@@ -72,10 +71,10 @@ public class Agent {
 	 * Retourne les {@link Action} mémorisées
 	 * @return les {@link Action} mémorisées
 	 */
-	public Set<Actions> actionMemorized() {
-		Set<Actions> actions = new HashSet<>();
+	public Set<Action> actionMemorized() {
+		Set<Action> actions = new HashSet<>();
 		for(Interaction interaction : memories) {
-			actions.add(interaction.getAction().getAction());
+			actions.add(interaction.getAction());
 		}
 		return actions;
 	}

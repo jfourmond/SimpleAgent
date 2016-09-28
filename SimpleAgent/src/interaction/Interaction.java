@@ -49,8 +49,8 @@ public class Interaction {
 			return false;
 		else {
 			Interaction interaction = (Interaction) obj;
-			return (action.equals(interaction.action) &&
-					result.equals(interaction.result) &&
+			return (action == interaction.action &&
+					result == interaction.result &&
 					value == interaction.value);
 		}
 	}
