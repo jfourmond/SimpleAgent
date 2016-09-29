@@ -13,13 +13,14 @@ import result.Result;
 public class Agent {
 	//	"Mémoire" de l'agent
 	private List<InteractionComposite> memories;
-	
+	private int countAction;
 	private int cycle;
 	
 	//	CONSTRUCTEURS
 	public Agent() {
 		memories = new ArrayList<>();
 		cycle = 0;
+		countAction = 0;
 	}
 	
 	//	GETTERS
@@ -40,21 +41,13 @@ public class Agent {
 		if(result == null) {
 			// Teste de la première action
 			action = actions[0];
+			countAction++;
 		} else {
-			// Tester le reste des actions
-			Set<Interaction> interactionsMemorized = interactionMemorized();
-			if(interactionsMemorized.size() < actions.length) {
-				Set<Action> actionsMemorized = actionsMemorized(interactionsMemorized);
-				for(Action a : actions) {
-					if(!actionsMemorized.contains(a)) action = a;
-				}
+			if(countAction < actions.length) {	// Tester le reste des actions
+				action = actions[countAction];
+				countAction++;
 			} else {
-				List<Action> actionsNotUsed = actionsNotUsedLast();
-				if(actionsNotUsed.isEmpty()) {
-					action = getLastPositiveAction();
-				} else {
-					System.out.println("YOLO");
-				}
+				action = getLastPositiveAction();
 				// TODO Trouver interaction qui fera peut-être augmenter la valence
 				// en cherchant une interaction composite semblable sinon
 				// tenter autre chose
@@ -159,40 +152,4 @@ public class Agent {
 	}
 	
 	//	METHODES STATIQUES
-	/**
-	 * Retourne la meilleure interaction de la liste d'interactions
-	 * @param interactions : {@link Set} d'{@link Interaction} à parcourir
-	 * @return la meilleure {@link Interaction}
-	 */
-	private static Interaction bestInteraction(List<Interaction> interactions) {
-		if(!interactions.isEmpty()) {
-			Interaction bestInteraction = interactions.get(0);
-			for(Interaction interaction : interactions) {
-				if(interaction.getValue() > bestInteraction.getValue())
-					bestInteraction = interaction;
-			}
-			return bestInteraction;
-		} else return null;
-	}
-	
-	private static InteractionComposite bestInteractionComposite(List<InteractionComposite> interactions) {
-		if(!interactions.isEmpty()) {
-			InteractionComposite bestInteraction = interactions.get(0);
-			for(InteractionComposite interaction : interactions) {
-				if(interaction.getValue() > bestInteraction.getValue())
-					bestInteraction = interaction;
-			}
-			return bestInteraction;
-		} else
-			return null;
-	}
-	
-	private static Set<Action> actionsMemorized(Set<Interaction> interactions) {
-		Set<Action> actions = new HashSet<>();
-		for(Interaction interaction : interactions) {
-			Action action = interaction.getAction();
-			actions.add(action);
-		}
-		return actions;
-	}
 }
