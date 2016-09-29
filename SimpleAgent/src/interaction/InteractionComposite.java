@@ -1,5 +1,7 @@
 package interaction;
 
+import action.Action;
+
 public class InteractionComposite {
 	private Interaction preInteraction;
 	private Interaction postInteraction;
@@ -63,6 +65,21 @@ public class InteractionComposite {
 			value = 0;
 	}
 	
+	public Action bestAction() {
+		if(preInteraction != null && postInteraction != null)
+			if(preInteraction.getValue() > postInteraction.getValue())
+				return preInteraction.getAction();
+			else
+				return postInteraction.getAction();
+		else if(preInteraction != null && postInteraction == null)
+			return preInteraction.getAction();
+		else if(preInteraction == null && postInteraction != null)
+			return postInteraction.getAction();
+		else if(preInteraction == null && postInteraction == null)
+			return null;
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder ch = new StringBuilder();
@@ -76,10 +93,8 @@ public class InteractionComposite {
 		if (obj == null || getClass() != obj.getClass())
 			return false;
 		else {
-			boolean b = super.equals(obj);
 			InteractionComposite interactionComposite = (InteractionComposite) obj;
-			return (b &&
-					preInteraction.equals(interactionComposite.preInteraction) &&
+			return (preInteraction.equals(interactionComposite.preInteraction) &&
 					postInteraction.equals(interactionComposite.postInteraction));
 		}
 	}

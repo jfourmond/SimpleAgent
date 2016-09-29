@@ -50,8 +50,7 @@ public class Interaction {
 		else {
 			Interaction interaction = (Interaction) obj;
 			return (action == interaction.action &&
-					result == interaction.result &&
-					value == interaction.value);
+					result == interaction.result);
 		}
 	}
 	
