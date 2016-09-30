@@ -1,4 +1,5 @@
 package main;
+
 import action.Action;
 import agent.Agent;
 import coupling.Coupling;
@@ -15,8 +16,8 @@ import result.Result;
 public class MainEnv1 {
 	public static void main(String[] args) {
 		Agent agent = new Agent();
-		Environment env = new Env1();	// Env2();		// Env3();
-		Coupling cp = new Coupling1();	// Coupling2;	// Coupling 3;
+		Environment env = new Env1();
+		Coupling cp = new Coupling1();
 		
 		Result result = null;
 		Action action = null;
@@ -34,7 +35,6 @@ public class MainEnv1 {
 			System.out.println(interaction);
 			
 			agent.setCycle(i);
-			agent.setLastInteraction(interaction);
 		}
 	}
 }

@@ -17,11 +17,15 @@ public class Agent {
 	private int cycle;
 	private int actionCount;
 	
+	private Random rand;
+	
 	//	CONSTRUCTEURS
 	public Agent() {
 		memories = new ArrayList<>();
 		cycle = 0;
 		actionCount = 0;
+		
+		rand = new Random();
 	}
 	
 	//	GETTERS
@@ -76,83 +80,20 @@ public class Agent {
 	 * @param interaction : {@link Interaction} à ajouter à la mémoire
 	 */
 	public void memorize(Interaction interaction) {
-		InteractionComposite compo = lastInteractionComposite();
-		if(compo == null) {	// La première interaction composite
-			compo = new InteractionComposite(interaction);
-			memories.add(compo);
-		} else {
-			if(!compo.hasPostInteraction())
-				compo.setPostInteraction(interaction);
-			else {
-				InteractionComposite compoNext = new InteractionComposite(lastInteraction(), interaction);
-				if(!memories.contains(compoNext)) memories.add(compoNext);
-			}
+		InteractionComposite compo;
+		if(lastInteraction != null) {
+			compo = new InteractionComposite(lastInteraction, interaction);
+			if(!memories.contains(compo)) memories.add(compo);
 		}
+		lastInteraction = interaction;
 	}
 	
 	public Action randAction(Action[] actions) {
 		// TODO C'est nul le random...
+		// TODO Vérifier si l'action a déjà été choisi, mais ne permet pas une interaction activée
 		System.out.println("Pas activé");
-		Random rand = new Random();
 		int n = rand.nextInt(actions.length);
 		return actions[n];
-	}
-	
-	/**
-	 * Retourne la dernière {@link InteractionComposite} mémorisée
-	 * @return la dernière {@link InteractionComposite} mémorisée
-	 */
-	public InteractionComposite lastInteractionComposite() {
-		InteractionComposite compo;
-		if(memories.isEmpty()) compo = null;
-		else {
-			compo = (InteractionComposite) memories.get(memories.size()-1);
-		}
-		return compo;
-	}
-	
-	/**
-	 * Retourne la meilleure {@link InteractionComposite} mémorisée
-	 * @return la meilleure {@link InteractionComposite} mémorisée
-	 */
-	public InteractionComposite bestInteractionComposite() {
-		InteractionComposite best = null;
-		if(!memories.isEmpty()) {
-			best = memories.get(0);
-			for(InteractionComposite compo : memories)
-				if(compo.getValue() > best.getValue()) best = compo;
-		}
-		return best;
-	}
-	
-	public InteractionComposite lastFullInteractionComposite() {
-		InteractionComposite best = null;
-		if(!memories.isEmpty()) {
-			best = memories.get(0);
-			InteractionComposite compo;
-			for(int i=0 ; i<memories.size() ; i++) {
-				compo = memories.get(i);
-				if(compo.hasPostInteraction() && compo.getValue() > best.getValue())
-					best = compo;
-			}
-				
-		}
-		return best;
-	}
-	
-	/**
-	 * Retourne la dernière {@link Interaction} mémorisée
-	 * @return la dernière {@link Interaction} mémorisée
-	 */
-	public Interaction lastInteraction() {
-		Interaction interaction = null;
-		if(!memories.isEmpty()) {
-			InteractionComposite interactionComposite = lastInteractionComposite();
-			if(interactionComposite.hasPostInteraction())
-				interaction = interactionComposite.getPostInteraction();
-			else interaction = interactionComposite.getPreInteraction();
-		}
-		return interaction;
 	}
 	
 	public List<InteractionComposite> activatedInteractionComposite(Interaction interaction) {

@@ -35,7 +35,6 @@ public class MainEnv2 {
 			System.out.println(interaction);
 			
 			agent.setCycle(i);
-			agent.setLastInteraction(interaction);
 		}
 	}
 
