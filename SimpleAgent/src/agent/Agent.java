@@ -15,8 +15,8 @@ public class Agent {
 	private Interaction lastInteraction;
 	
 	private int cycle;
-	private int actionCount;
 	
+	private int actionCount;
 	private Random rand;
 	
 	//	CONSTRUCTEURS
@@ -44,7 +44,6 @@ public class Agent {
 	
 	//	METHODES
 	public Action chooseAction(Result result) {
-		// TODO Revoir code, revoir raisonnement (deuxième if)
 		Action[] actions = Action.values();
 		Action action = null;
 		if(result == null) {
@@ -103,5 +102,13 @@ public class Agent {
 				interactionsComposites.add(IC);
 		}
 		return interactionsComposites;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder ch = new StringBuilder();
+		ch.append("Agent (Age " + cycle + ") : \n");
+		ch.append("Memories : " + memories + "\n");
+		return ch.toString();
 	}
 }

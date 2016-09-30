@@ -36,5 +36,7 @@ public class MainEnv1 {
 			
 			agent.setCycle(i);
 		}
+		
+		System.out.println(agent);
 	}
 }
