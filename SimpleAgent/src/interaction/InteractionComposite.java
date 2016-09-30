@@ -1,7 +1,5 @@
 package interaction;
 
-import action.Action;
-
 public class InteractionComposite {
 	private Interaction preInteraction;
 	private Interaction postInteraction;
@@ -58,14 +56,32 @@ public class InteractionComposite {
 	public void setWeight(int weight) { this.weight = weight; }
 	
 	// METHODES
+	/**
+	 * Teste si l'{@link InteractionComposite} courante possède une première {@link Interaction}
+	 * @return <code>true</code> si l'{@link InteractionComposite} courante possède une première {@link Interaction}
+	 * @return <code>false</code> sinon
+	 */
 	public boolean hasPreInteraction() { return preInteraction != null; }
 	
+	/**
+	 * Teste si l'{@link InteractionComposite} courante possède une seconde {@link Interaction}
+	 * @return <code>true</code> si l'{@link InteractionComposite} courante possède une seconde {@link Interaction}
+	 * @return <code>false</code> sinon
+	 */
 	public boolean hasPostInteraction() { return postInteraction != null; }
 	
+	/**
+	 * Teste si l'{@link InteractionComposite} courante est pleine, c-à-d possède une première et une seconde {@link Interaction}
+	 * @return <code>true</code>  si l'{@link InteractionComposite} courante est pleine
+	 * @return <code>false</code> sinon
+	 */
 	public boolean isFull() {
 		return (hasPreInteraction() && hasPostInteraction());
 	}
 	
+	/**
+	 * Met à jour l'attribut valeur/valence de l'{@link InteractionComposite} courante
+	 */
 	public void calculateValue() {
 		if(preInteraction != null && postInteraction != null)
 			value = preInteraction.getValue() + postInteraction.getValue();
@@ -77,21 +93,12 @@ public class InteractionComposite {
 			value = 0;
 	}
 	
-	public Action bestAction() {
-		if(preInteraction != null && postInteraction != null)
-			if(preInteraction.getValue() > postInteraction.getValue())
-				return preInteraction.getAction();
-			else
-				return postInteraction.getAction();
-		else if(preInteraction != null && postInteraction == null)
-			return preInteraction.getAction();
-		else if(preInteraction == null && postInteraction != null)
-			return postInteraction.getAction();
-		else if(preInteraction == null && postInteraction == null)
-			return null;
-		return null;
-	}
-	
+	/**
+	 * Teste si l'{@link InteractionComposite} courante est active pour l'{@link Interaction} passée en paramètre
+	 * @param interaction : à tester l'activation sur l'{@link InteractionComposite}
+	 * @return <code>true</code> si l'{@link InteractionComposite} courante est active pour l'{@link Interaction} passée en paramètre
+	 * @return <code>false</code> sinon
+	 */
 	public boolean active(Interaction interaction) {
 		return interaction.equals(preInteraction);
 	}

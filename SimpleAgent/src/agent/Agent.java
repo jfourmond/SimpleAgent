@@ -58,6 +58,7 @@ public class Agent {
 				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
 				if(activatedComposites.isEmpty()) {
 					// Aucune interaction ne convient donc...
+					System.out.println("Pas activée...");
 					action = randAction(actions);
 				} else {
 					for(InteractionComposite compos : activatedComposites) {
@@ -66,6 +67,7 @@ public class Agent {
 					}
 					if(action == null) {
 						// Aucune interaction ne convient donc...
+						System.out.println("Aucune interaction ne convenant... négativement");
 						action = randAction(actions);
 					}
 				}
@@ -90,11 +92,15 @@ public class Agent {
 	public Action randAction(Action[] actions) {
 		// TODO C'est nul le random...
 		// TODO Vérifier si l'action a déjà été choisi, mais ne permet pas une interaction activée
-		System.out.println("Pas activé");
 		int n = rand.nextInt(actions.length);
 		return actions[n];
 	}
 	
+	/**
+	 * Retourne une {@link List} des {@link InteractionComposite} activées pour l' {@link Interaction} passée en paramètre
+	 * @param interaction : {@link Interaction} à tester l'activation sur la mémoire
+	 * @return une {@link List} des {@link InteractionComposite} activées pour l' {@link Interaction} passée en paramètre
+	 */
 	public List<InteractionComposite> activatedInteractionComposite(Interaction interaction) {
 		List<InteractionComposite> interactionsComposites = new ArrayList<>();
 		for(InteractionComposite IC : memories) {
