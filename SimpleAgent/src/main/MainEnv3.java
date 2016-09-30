@@ -1,6 +1,7 @@
 package main;
 
 import action.Action;
+import agent.Agent;
 import coupling.Coupling;
 import coupling.Coupling3;
 import environment.Env3;
@@ -8,6 +9,10 @@ import environment.Environment;
 import interaction.Interaction;
 import result.Result;
 
+/**
+ * Traitement de l'agent avec l'environnement 3
+ * @author Jérôme
+ */
 public class MainEnv3 {
 	public static void main(String[] args) {
 		Agent agent = new Agent();
@@ -16,11 +21,10 @@ public class MainEnv3 {
 		
 		Result result = null;
 		Action action = null;
-		Interaction interaction;
+		Interaction interaction = null;
 		
 		for(int i=0 ; i<10 ; i++) {
 			action = agent.chooseAction(result);
-			System.out.println(action);
 			result = env.giveResult(action);
 			
 			interaction = new Interaction(action, result);
@@ -29,7 +33,9 @@ public class MainEnv3 {
 			agent.memorize(interaction);
 			
 			System.out.println(interaction);
+			
 			agent.setCycle(i);
+			agent.setLastInteraction(interaction);
 		}
 	}
 }

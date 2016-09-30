@@ -25,6 +25,14 @@ public class InteractionComposite {
 		weight = 0;
 	}
 	
+	public InteractionComposite(Interaction preInteraction, Interaction postInteraction) {
+		this.preInteraction = preInteraction;
+		this.postInteraction = postInteraction;
+		
+		calculateValue();
+		weight = 0;
+	}
+	
 	//	GETTERS
 	public Interaction getPreInteraction() { return preInteraction; }
 	
@@ -54,6 +62,10 @@ public class InteractionComposite {
 	
 	public boolean hasPostInteraction() { return postInteraction != null; }
 	
+	public boolean isFull() {
+		return (hasPreInteraction() && hasPostInteraction());
+	}
+	
 	public void calculateValue() {
 		if(preInteraction != null && postInteraction != null)
 			value = preInteraction.getValue() + postInteraction.getValue();
@@ -78,6 +90,10 @@ public class InteractionComposite {
 		else if(preInteraction == null && postInteraction == null)
 			return null;
 		return null;
+	}
+	
+	public boolean active(Interaction interaction) {
+		return interaction.equals(preInteraction);
 	}
 	
 	@Override

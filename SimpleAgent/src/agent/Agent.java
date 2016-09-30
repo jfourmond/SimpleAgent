@@ -1,9 +1,8 @@
-package main;
+package agent;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.Random;
 
 import action.Action;
 import interaction.Interaction;
@@ -13,23 +12,29 @@ import result.Result;
 public class Agent {
 	//	"Mémoire" de l'agent
 	private List<InteractionComposite> memories;
-	private int countAction;
+	private Interaction lastInteraction;
+	
 	private int cycle;
+	private int actionCount;
 	
 	//	CONSTRUCTEURS
 	public Agent() {
 		memories = new ArrayList<>();
 		cycle = 0;
-		countAction = 0;
+		actionCount = 0;
 	}
 	
 	//	GETTERS
 	public List<InteractionComposite> getMemories() { return memories; }
 	
+	public Interaction getLastInteraction() { return lastInteraction; }
+	
 	public int getCycle() { return cycle; }
 	
 	//	SETTERS
 	public void setMemories(List<InteractionComposite> memories) { this.memories = memories; }
+	
+	public void setLastInteraction(Interaction lastInteraction) { this.lastInteraction = lastInteraction; }
 	
 	public void setCycle(int cycle) { this.cycle = cycle; }
 	
@@ -41,17 +46,26 @@ public class Agent {
 		if(result == null) {
 			// Teste de la première action
 			action = actions[0];
-			countAction++;
+			actionCount++;
 		} else {
-			if(countAction < actions.length) {	// Tester le reste des actions
-				action = actions[countAction];
-				countAction++;
+			if(actionCount < actions.length) {	// Teste de la / des autres actions
+				action = actions[actionCount];
+				actionCount++;
 			} else {
-				action = getLastPositiveAction();
-				// TODO Trouver interaction qui fera peut-être augmenter la valence
-				// en cherchant une interaction composite semblable sinon
-				// tenter autre chose
-				
+				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
+				if(activatedComposites.isEmpty()) {
+					// Aucune interaction ne convient donc...
+					action = randAction(actions);
+				} else {
+					for(InteractionComposite compos : activatedComposites) {
+						Interaction post = compos.getPostInteraction();
+						if(post.getValue() > 0) action = post.getAction();
+					}
+					if(action == null) {
+						// Aucune interaction ne convient donc...
+						action = randAction(actions);
+					}
+				}
 			}
 		}
 		return action;
@@ -63,36 +77,25 @@ public class Agent {
 	 */
 	public void memorize(Interaction interaction) {
 		InteractionComposite compo = lastInteractionComposite();
-		if(compo == null) {
+		if(compo == null) {	// La première interaction composite
 			compo = new InteractionComposite(interaction);
 			memories.add(compo);
 		} else {
-			InteractionComposite compoNext;
-			if(!compo.hasPostInteraction()) {
+			if(!compo.hasPostInteraction())
 				compo.setPostInteraction(interaction);
-				compoNext = new InteractionComposite(compo.getPostInteraction());
-				memories.add(compoNext);
-			} else {
-				// CAS DE FIGURE DEBUGUAGE (ne devrait jamais arriver)
-				compoNext = new InteractionComposite(compo.getPostInteraction());
-				memories.add(compoNext);
+			else {
+				InteractionComposite compoNext = new InteractionComposite(lastInteraction(), interaction);
+				if(!memories.contains(compoNext)) memories.add(compoNext);
 			}
 		}
 	}
 	
-	/**
-	 * Retourne les {@link Interaction} mémorisées
-	 * @return les {@link Interaction} mémorisées
-	 */
-	public Set<Interaction> interactionMemorized() {
-		Set<Interaction> interactions = new HashSet<>();
-		for(InteractionComposite compo : memories) {
-			Interaction preInteraction = compo.getPreInteraction();
-			if(preInteraction != null) interactions.add(preInteraction);
-			Interaction postInteraction = compo.getPostInteraction();
-			if(postInteraction != null) interactions.add(postInteraction);
-		}
-		return interactions;
+	public Action randAction(Action[] actions) {
+		// TODO C'est nul le random...
+		System.out.println("Pas activé");
+		Random rand = new Random();
+		int n = rand.nextInt(actions.length);
+		return actions[n];
 	}
 	
 	/**
@@ -106,50 +109,58 @@ public class Agent {
 			compo = (InteractionComposite) memories.get(memories.size()-1);
 		}
 		return compo;
-		
 	}
 	
-	public List<Action> actionsNotUsedLast() {
-		Action[] actions = Action.values();
-		List<Action> actionsUsed = new ArrayList<>();
-		List<Action> actionsNotUsed = new ArrayList<>();
-		for(InteractionComposite interaction : memories) {
-			Interaction pre = interaction.getPreInteraction();
-			if(pre != null) {
-				Action action = pre.getAction();
-				if(!actionsUsed.contains(action))
-					actionsUsed.add(action);
-			}
-		}
-		for(Action action : actions) {
-			if(!actionsUsed.contains(action))
-				actionsNotUsed.add(action);
-		}
-		return actionsNotUsed;
-	}
-	
-	public Action getLastPositiveAction() {
-		Action action = null;
-		int value;
+	/**
+	 * Retourne la meilleure {@link InteractionComposite} mémorisée
+	 * @return la meilleure {@link InteractionComposite} mémorisée
+	 */
+	public InteractionComposite bestInteractionComposite() {
+		InteractionComposite best = null;
 		if(!memories.isEmpty()) {
-			Interaction it = memories.get(0).getPreInteraction();
-			action = it.getAction();
-			value = it.getValue();
-			for(InteractionComposite interaction : memories) {
-				Interaction pre = interaction.getPreInteraction();
-				if(pre != null && pre.getValue() > value) {
-					action = pre.getAction();
-					value = pre.getValue();
-				}
-				Interaction post = interaction.getPostInteraction();
-				if(post != null && post.getValue() > value) {
-					action = post.getAction();
-					value = post.getValue();
-				}
-			}
+			best = memories.get(0);
+			for(InteractionComposite compo : memories)
+				if(compo.getValue() > best.getValue()) best = compo;
 		}
-		return action;
+		return best;
 	}
 	
-	//	METHODES STATIQUES
+	public InteractionComposite lastFullInteractionComposite() {
+		InteractionComposite best = null;
+		if(!memories.isEmpty()) {
+			best = memories.get(0);
+			InteractionComposite compo;
+			for(int i=0 ; i<memories.size() ; i++) {
+				compo = memories.get(i);
+				if(compo.hasPostInteraction() && compo.getValue() > best.getValue())
+					best = compo;
+			}
+				
+		}
+		return best;
+	}
+	
+	/**
+	 * Retourne la dernière {@link Interaction} mémorisée
+	 * @return la dernière {@link Interaction} mémorisée
+	 */
+	public Interaction lastInteraction() {
+		Interaction interaction = null;
+		if(!memories.isEmpty()) {
+			InteractionComposite interactionComposite = lastInteractionComposite();
+			if(interactionComposite.hasPostInteraction())
+				interaction = interactionComposite.getPostInteraction();
+			else interaction = interactionComposite.getPreInteraction();
+		}
+		return interaction;
+	}
+	
+	public List<InteractionComposite> activatedInteractionComposite(Interaction interaction) {
+		List<InteractionComposite> interactionsComposites = new ArrayList<>();
+		for(InteractionComposite IC : memories) {
+			if(IC.active(interaction))
+				interactionsComposites.add(IC);
+		}
+		return interactionsComposites;
+	}
 }
