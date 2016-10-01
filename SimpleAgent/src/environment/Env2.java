@@ -13,9 +13,9 @@ public class Env2 implements Environment{
 	public Result giveResult(Action A) {
 		switch(A) {
 			case CIRCLE:
-				return Result.WHITE;
-			case TRIANGLE:
 				return Result.GREEN;
+			case TRIANGLE:
+				return Result.WHITE;
 			default:
 				return null;
 		}

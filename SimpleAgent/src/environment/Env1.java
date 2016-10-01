@@ -12,9 +12,9 @@ public class Env1 implements Environment {
 	@Override
 	public Result giveResult(Action A) {
 		switch(A) {
-			case CIRCLE:
-				return Result.GREEN;
 			case TRIANGLE:
+				return Result.GREEN;
+			case CIRCLE:
 				return Result.WHITE;
 			default:
 				return null;
