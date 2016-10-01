@@ -10,7 +10,6 @@ public class Coupling3 implements Coupling {
 	@Override
 	public void motivate(Interaction interaction) {
 		Result result = interaction.getResult();
-		
 		int value = 0;
 		
 		if(result == Result.WHITE) value = 0;
