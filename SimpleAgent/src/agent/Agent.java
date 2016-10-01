@@ -2,7 +2,6 @@ package agent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import action.Action;
 import interaction.Interaction;
@@ -17,15 +16,12 @@ public class Agent {
 	private int cycle;
 	
 	private int actionCount;
-	private Random rand;
 	
 	//	CONSTRUCTEURS
 	public Agent() {
 		memories = new ArrayList<>();
 		cycle = 0;
 		actionCount = 0;
-		
-		rand = new Random();
 	}
 	
 	//	GETTERS
@@ -59,7 +55,7 @@ public class Agent {
 				if(activatedComposites.isEmpty()) {
 					// Aucune interaction ne convient donc...
 					System.out.println("Pas activée...");
-					action = randAction(actions);
+					action = randAction();
 				} else {
 					for(InteractionComposite compos : activatedComposites) {
 						Interaction post = compos.getPostInteraction();
@@ -68,7 +64,7 @@ public class Agent {
 					if(action == null) {
 						// Aucune interaction ne convient donc...
 						System.out.println("Aucune interaction ne convenant... négativement");
-						action = randAction(actions);
+						action = randAction();
 					}
 				}
 			}
@@ -89,11 +85,17 @@ public class Agent {
 		lastInteraction = interaction;
 	}
 	
-	public Action randAction(Action[] actions) {
+	public Action randAction() {
 		// TODO C'est nul le random...
 		// TODO Vérifier si l'action a déjà été choisi, mais ne permet pas une interaction activée
-		int n = rand.nextInt(actions.length);
-		return actions[n];
+		Action[] actions = Action.values();
+		Action action = null;
+		for(Action a : actions) {
+			action = a;
+			if(!knownComposite(lastInteraction.getAction(), action))
+				return action;
+		}
+		return action;
 	}
 	
 	/**
@@ -108,6 +110,16 @@ public class Agent {
 				interactionsComposites.add(IC);
 		}
 		return interactionsComposites;
+	}
+	
+	public boolean knownComposite(Action preAction, Action postAction) {
+		for(InteractionComposite IC : memories) {
+			Interaction preInteraction = IC.getPreInteraction();
+			Interaction postInteraction = IC.getPostInteraction();
+			if(preInteraction.getAction() == preAction && postInteraction.getAction() == postAction)
+				return true;
+		}
+		return false;
 	}
 	
 	@Override

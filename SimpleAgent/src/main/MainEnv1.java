@@ -31,12 +31,8 @@ public class MainEnv1 {
 			cp.motivate(interaction);
 			
 			agent.memorize(interaction);
-			
-			System.out.println(interaction);
-			
 			agent.setCycle(i);
+			System.out.println(interaction);
 		}
-		
-		System.out.println(agent);
 	}
 }
