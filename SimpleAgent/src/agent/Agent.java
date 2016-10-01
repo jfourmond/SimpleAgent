@@ -85,6 +85,10 @@ public class Agent {
 		lastInteraction = interaction;
 	}
 	
+	/**
+	 * Retourne une action qui n'est pas encore connue par l'agent
+	 * @return une {@link Action} qui n'est pas encore connue par l' {@link Agent}
+	 */
 	public Action randAction() {
 		Action[] actions = Action.values();
 		Action action = null;
@@ -110,6 +114,15 @@ public class Agent {
 		return interactionsComposites;
 	}
 	
+	/**
+	 * Teste s'il existe une {@link InteractionComposite} dont la préInteraction est la preAction passée en paramètre
+	 * et dont la postAction est la postAction passée en paramètre
+	 * @param preAction {@link Action} à rechercher
+	 * @param postAction {@link Action} à rechercher
+	 * @return <code>true</code> s'il existe une {@link InteractionComposite} dont la préInteraction est la preAction
+	 * et dont la postAction est la postAction
+	 * @return <code>false</code> sinon
+	 */
 	public boolean knownComposite(Action preAction, Action postAction) {
 		for(InteractionComposite IC : memories) {
 			Interaction preInteraction = IC.getPreInteraction();

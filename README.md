@@ -1,4 +1,4 @@
-# SimpleAgent
+# Simple Agent
 
 ## TD d'IA développementale
 
@@ -6,20 +6,20 @@ Le but du TD est d'implémenter un agent qui apprenne à effectuer les interacti
 
 ### Actions
 
-Deux [actions](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/action/Action.java) possibles E = {a1, a2}, ici représenté par :
+Deux [actions](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/action/Action.java) possibles E = {a1, a2}, ici représentées par :
 - **TRIANGLE**
 - **CIRCLE**.
 
 ### Résultats
 
-Deux [resultats](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/result/Result.java) possibles R = {r1, r2}, ici représenté par :
+Deux [resultats](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/result/Result.java) possibles R = {r1, r2}, ici représentés par :
 - **WHITE**
 - **GREEN**.
 
 
 ### Interactions
 
-Quatres [interactions](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/interaction/Interaction.java) possibles E x R = {i11, i12, i21, i22}, ici représenté par :
+Quatres [interactions](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/interaction/Interaction.java) possibles E x R = {i11, i12, i21, i22}, ici représentés par :
 - **TRIANGLE WHITE**
 - **TRIANGLE GREEN**
 - **CIRCLE WHITE**
