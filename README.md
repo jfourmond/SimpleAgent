@@ -27,6 +27,7 @@ Quatres [interactions](https://github.com/jfourmond/SimpleAgent/blob/master/Simp
 
 ### Environnement
 
+Quatre environnements : 
 [Environnement 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Env1.java) : 
 - e1 -> r1 , e2 -> r2   (i12 et i21 ne se produisent jamais)
 
@@ -37,6 +38,9 @@ Quatres [interactions](https://github.com/jfourmond/SimpleAgent/blob/master/Simp
 - Retourne résultat r2 uniquement si l’agent alterne les actioons.
 -  Agent motivé pour obtenir r2: (i12 > 0, i22 > 0)
 - a1 -> r2, a1 -> r1, … a1 -> r1, a2-> r2, … a2->r1, … a2 -> r1, a1->r2, a2 -> r2, a1 -> r2, a2 -> r2, …
+
+[Environnement 4](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Env4.java) :
+- Se comporte comme [Environnement 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Env1.java) pendant les 10 premiers cycles, puis comme [Environnement 2](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Env2.java).
 
 ### Système motivationnel
 
