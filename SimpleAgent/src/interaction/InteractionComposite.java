@@ -31,6 +31,14 @@ public class InteractionComposite {
 		weight = 0;
 	}
 	
+	public InteractionComposite(Interaction preInteraction, Interaction postInteraction, int weight) {
+		this.preInteraction = preInteraction;
+		this.postInteraction = postInteraction;
+		
+		calculateValue();
+		this.weight = weight;
+	}
+	
 	//	GETTERS
 	public Interaction getPreInteraction() { return preInteraction; }
 	
@@ -103,11 +111,16 @@ public class InteractionComposite {
 		return interaction.equals(preInteraction);
 	}
 	
+	/**
+	 * Renforce l'{@link InteractionComposite}
+	 */
+	public void reinforce() { weight++; }
+	
 	@Override
 	public String toString() {
 		StringBuilder ch = new StringBuilder();
-		ch.append("< " + value + " ");
-		ch.append("[ " + preInteraction + " , " + postInteraction + " ] >");
+		ch.append("< [ " + preInteraction + " , " + postInteraction + " ] ");
+		ch.append(value + " - " + weight + " >");
 		return ch.toString();
 	}
 	

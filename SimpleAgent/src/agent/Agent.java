@@ -79,8 +79,13 @@ public class Agent {
 	public InteractionComposite memorize(Interaction interaction) {
 		InteractionComposite compo = null;
 		if(lastInteraction != null) {
-			compo = new InteractionComposite(lastInteraction, interaction);
+			compo = new InteractionComposite(lastInteraction, interaction, 1);
 			if(!memories.contains(compo)) memories.add(compo);
+			else {
+				int n = memories.indexOf(compo);
+				compo = memories.get(n);
+				compo.reinforce();
+			}
 		}
 		lastInteraction = interaction;
 		return compo;
