@@ -76,13 +76,14 @@ public class Agent {
 	 * Mémorisation de l'interaction
 	 * @param interaction : {@link Interaction} à ajouter à la mémoire
 	 */
-	public void memorize(Interaction interaction) {
-		InteractionComposite compo;
+	public InteractionComposite memorize(Interaction interaction) {
+		InteractionComposite compo = null;
 		if(lastInteraction != null) {
 			compo = new InteractionComposite(lastInteraction, interaction);
 			if(!memories.contains(compo)) memories.add(compo);
 		}
 		lastInteraction = interaction;
+		return compo;
 	}
 	
 	/**

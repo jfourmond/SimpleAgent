@@ -106,8 +106,8 @@ public class InteractionComposite {
 	@Override
 	public String toString() {
 		StringBuilder ch = new StringBuilder();
-		ch.append(value + " ");
-		ch.append("[ " + preInteraction + " , " + postInteraction + " ]");
+		ch.append("< " + value + " ");
+		ch.append("[ " + preInteraction + " , " + postInteraction + " ] >");
 		return ch.toString();
 	}
 	

@@ -7,6 +7,7 @@ import coupling.Coupling3;
 import environment.Env3;
 import environment.Environment;
 import interaction.Interaction;
+import interaction.InteractionComposite;
 import result.Result;
 
 /**
@@ -22,7 +23,7 @@ public class MainEnv3 {
 		Result result = null;
 		Action action = null;
 		Interaction interaction = null;
-		
+		InteractionComposite compo = null;
 		for(int i=0 ; i<10 ; i++) {
 			action = agent.chooseAction(result);
 			result = env.giveResult(action);
@@ -30,9 +31,10 @@ public class MainEnv3 {
 			interaction = new Interaction(action, result);
 			cp.motivate(interaction);
 			
-			agent.memorize(interaction);
+			compo = agent.memorize(interaction);
 			agent.setCycle(i);
-			System.out.println(interaction);
+			
+			if(compo != null) System.out.println(interaction + "\t-\tMemorisation de " + compo);
 		}
 	}
 }
