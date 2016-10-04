@@ -27,7 +27,8 @@ Quatres [interactions](https://github.com/jfourmond/SimpleAgent/blob/master/Simp
 
 ### Environnement
 
-Quatre environnements : 
+Quatre environnements :
+
 [Environnement 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Env1.java) : 
 - e1 -> r1 , e2 -> r2   (i12 et i21 ne se produisent jamais)
 
@@ -56,6 +57,7 @@ Quatre environnements :
 ### Agent
 
 Deux agents :
+
 [Agent 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/agent/Agent1.java) : premier agent basique utile jusqu'au troisième environnement.
 
 [Agent 2]((https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Agent2.java) : second agent pour le quatrièment environnement.
