@@ -2,6 +2,7 @@ package main;
 
 import action.Action;
 import agent.Agent;
+import agent.Agent1;
 import coupling.Coupling;
 import coupling.Coupling2;
 import environment.Env2;
@@ -15,7 +16,7 @@ import result.Result;
  */
 public class MainEnv2 {
 	public static void main(String[] args) {
-		Agent agent = new Agent();
+		Agent agent = new Agent1();
 		Environment env = new Env2();
 		Coupling cp = new Coupling2();
 		
@@ -31,7 +32,6 @@ public class MainEnv2 {
 			cp.motivate(interaction);
 			
 			agent.memorize(interaction);
-			agent.setCycle(i);
 			System.out.println(interaction);
 		}
 	}

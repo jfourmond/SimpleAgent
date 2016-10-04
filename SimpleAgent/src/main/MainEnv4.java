@@ -2,6 +2,7 @@ package main;
 
 import action.Action;
 import agent.Agent;
+import agent.Agent1;
 import coupling.Coupling;
 import coupling.Coupling3;
 import environment.Env4;
@@ -16,7 +17,7 @@ import result.Result;
  */
 public class MainEnv4 {
 	public static void main(String[] args) {
-		Agent agent = new Agent();
+		Agent agent = new Agent1();
 		Environment env = new Env4();
 		// TODO Coupling4
 		Coupling cp = new Coupling3();
@@ -34,7 +35,6 @@ public class MainEnv4 {
 			cp.motivate(interaction);
 			
 			compo = agent.memorize(interaction);
-			agent.setCycle(i);
 			
 			if(compo != null) System.out.println(interaction + "\t-\tMemorisation de " + compo);
 		}
