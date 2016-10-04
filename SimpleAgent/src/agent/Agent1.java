@@ -54,7 +54,6 @@ public class Agent1 implements Agent {
 				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
 				if(activatedComposites.isEmpty()) {
 					// Aucune interaction ne convient donc...
-					System.out.println("Pas activée...");
 					action = randAction();
 				} else {
 					for(InteractionComposite compo : activatedComposites) {
@@ -64,7 +63,6 @@ public class Agent1 implements Agent {
 					
 					if(action == null) {
 						// Aucune interaction ne convient donc...
-						System.out.println("Aucune interaction ne convenant... négativement");
 						action = randAction();
 					}
 				}

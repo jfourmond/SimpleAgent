@@ -2,7 +2,7 @@ package main;
 
 import action.Action;
 import agent.Agent;
-import agent.Agent1;
+import agent.Agent2;
 import coupling.Coupling;
 import coupling.Coupling3;
 import environment.Env4;
@@ -17,7 +17,7 @@ import result.Result;
  */
 public class MainEnv4 {
 	public static void main(String[] args) {
-		Agent agent = new Agent1();
+		Agent agent = new Agent2();
 		Environment env = new Env4();
 		// TODO Coupling4
 		Coupling cp = new Coupling3();
