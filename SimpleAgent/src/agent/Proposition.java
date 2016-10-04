@@ -42,4 +42,12 @@ public class Proposition implements Comparable<Proposition>{
 			return (proposition.getAction() == action);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder ch = new StringBuilder();
+		ch.append("< " + action);
+		ch.append(" - " + proclivity + " >");
+		return ch.toString();
+	}
 }

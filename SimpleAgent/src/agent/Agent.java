@@ -52,24 +52,26 @@ public class Agent {
 				actionCount++;
 			} else {
 				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
-				List<Proposition> propositionsInteraction;
-				List<Proposition> propositionsAction;
 				if(activatedComposites.isEmpty()) {
 					// Aucune interaction ne convient donc...
 					System.out.println("Pas activée...");
 					action = randAction();
 				} else {
+					// /** TODO ESSAI 1
 					for(InteractionComposite compo : activatedComposites) {
 						Interaction post = compo.getPostInteraction();
 						if(post.getValue() > 0) action = post.getAction();
 					}
+					// TODO Fin ESSAI 1 */
 					
-					// TODO ESSAI
+					/** TODO ESSAI 2
+					List<Proposition> propositionsInteraction;
+					List<Proposition> propositionsAction;
 					propositionsInteraction = buildPropositionsInteraction(activatedComposites);
 					propositionsAction = buildPropositionsAction(propositionsInteraction);
 					action = getMaxAction(propositionsAction);
 					System.out.println(action);
-					// TODO FIN ESSAI
+					TODO FIN ESSAI 2 */
 					
 					if(action == null) {
 						// Aucune interaction ne convient donc...
@@ -168,6 +170,7 @@ public class Agent {
 			proposition.setProclivity(n);
 			propositions.add(proposition);
 		}
+		System.out.println(propositions);
 		return propositions;
 	}
 	
