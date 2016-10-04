@@ -8,7 +8,7 @@ import interaction.Interaction;
 import interaction.InteractionComposite;
 import result.Result;
 
-public class Agent1 implements Agent {
+public class Agent2 implements Agent {
 	//	"Mémoire" de l'agent
 	private List<InteractionComposite> memories;
 	private Interaction lastInteraction;
@@ -18,7 +18,7 @@ public class Agent1 implements Agent {
 	private int actionCount;
 	
 	//	CONSTRUCTEURS
-	public Agent1() {
+	public Agent2() {
 		memories = new ArrayList<>();
 		cycle = 0;
 		actionCount = 0;
@@ -57,16 +57,12 @@ public class Agent1 implements Agent {
 					System.out.println("Pas activée...");
 					action = randAction();
 				} else {
-					for(InteractionComposite compo : activatedComposites) {
-						Interaction post = compo.getPostInteraction();
-						if(post.getValue() > 0) action = post.getAction();
-					}
-					
-					if(action == null) {
-						// Aucune interaction ne convient donc...
-						System.out.println("Aucune interaction ne convenant... négativement");
-						action = randAction();
-					}
+					List<Proposition> propositionsInteraction;
+					List<Proposition> propositionsAction;
+					propositionsInteraction = buildPropositionsInteraction(activatedComposites);
+					propositionsAction = buildPropositionsAction(propositionsInteraction);
+					action = getMaxAction(propositionsAction);
+					System.out.println(action);
 				}
 			}
 		}
@@ -139,6 +135,51 @@ public class Agent1 implements Agent {
 				return true;
 		}
 		return false;
+	}
+	
+	private List<Proposition> buildPropositionsInteraction(List<InteractionComposite> composites) {
+		List<Proposition> propositions = new ArrayList<>();
+		for(InteractionComposite compo : composites) {
+			for(Interaction interaction : compo.interactions()) {
+				propositions.add(new Proposition(interaction.getAction(), compo.getWeight() * interaction.getValue()));
+			}
+		}
+		return propositions;
+	}
+	
+	private List<Proposition> buildPropositionsAction(List<Proposition> propositionsInteraction) {
+		List<Proposition> propositions = new ArrayList<>();
+		Action[] actions = Action.values();
+		for(Action action : actions) {
+			Proposition proposition = new Proposition(action, 0);
+			int n = getFullProclivityAction(propositions, action);
+			proposition.setProclivity(n);
+			propositions.add(proposition);
+		}
+		System.out.println(propositions);
+		return propositions;
+	}
+	
+	private int getFullProclivityAction(List<Proposition> propositions, Action action) {
+		int n = 0;
+		for(Proposition proposition : propositions) {
+			if(proposition.getAction() == action)
+				n += proposition.getProclivity();
+		}
+		return n;
+	}
+
+	private Action getMaxAction(List<Proposition> propositionsAction) {
+		Action action = null;
+		if(!propositionsAction.isEmpty()) {
+			Proposition bp = propositionsAction.get(0);
+			for(Proposition proposition : propositionsAction) {
+				if(proposition.getProclivity() > bp.getProclivity())
+					bp = proposition;
+			}
+			action = bp.getAction();
+		}
+		return action;
 	}
 	
 	@Override
