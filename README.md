@@ -52,3 +52,10 @@ Quatre environnements :
 
 [Coupling 3](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/coupling/Coupling3.java) :
 - gestion de l'alternance
+
+### Agent
+
+Deux agents :
+[Agent 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/agent/Agent1.java) : premier agent basique utile jusqu'au troisième environnement
+
+[Agent 2]((https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Agent2.java) : second agent pour le quatrièment environnement
