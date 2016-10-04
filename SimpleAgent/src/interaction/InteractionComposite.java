@@ -1,5 +1,8 @@
 package interaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InteractionComposite {
 	private Interaction preInteraction;
 	private Interaction postInteraction;
@@ -115,6 +118,17 @@ public class InteractionComposite {
 	 * Renforce l'{@link InteractionComposite}
 	 */
 	public void reinforce() { weight++; }
+	
+	/**
+	 * Retourne les {@link Interaction}s de l'{@link InteractionComposite} courante sous la forme d'une {@link ArrayList}
+	 * @return les {@link Interaction}s de l'{@link InteractionComposite} sous la forme d'une {@link ArrayList}
+	 */
+	public List<Interaction> interactions() {
+		List<Interaction> interactions = new ArrayList<>();
+		interactions.add(preInteraction);
+		interactions.add(postInteraction);
+		return interactions;
+	}
 	
 	@Override
 	public String toString() {
