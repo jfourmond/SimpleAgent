@@ -1,8 +1,19 @@
 # Simple Agent
 
-## TD d'IA développementale
+Travail Dirigé d'IA développementale sous la direction de :
+- [Dr. GEORGEON Olivier](http://oliviergeorgeon.com/),
 
-Le but du TD est d'implémenter un agent qui apprenne à effectuer les interactions positives sans connaître à priori son système motivationnel ni son environnement.
+Par : 
+- [FOURMOND Jérôme](https://github.com/jfourmond/)
+
+Dans le cadre de l'Unité d'Enseignement **Artifical Intelligence and Cognition** du [Master 2 Informatique - Parcours Intelligence Artificielle](http://master-info.univ-lyon1.fr/IA/) de l'[Université Claude Bernard Lyon 1](http://www.univ-lyon1.fr/).
+
+---
+
+## Objectifs
+Le but du Travail Dirigé est d'implémenter un agent qui apprenne à effectuer les interactions positives sans connaître à priori son système motivationnel ni son environnement.
+
+## Présentation
 
 ### Actions
 
@@ -60,4 +71,6 @@ Deux agents :
 
 [Agent 1](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/agent/Agent1.java) : premier agent basique utile jusqu'au troisième environnement.
 
-[Agent 2]((https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Agent2.java) : second agent pour le quatrièment environnement.
+[Agent 2](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Agent2.java) : second agent pour le quatrièment environnement.
+
+## Traces & Résultats
