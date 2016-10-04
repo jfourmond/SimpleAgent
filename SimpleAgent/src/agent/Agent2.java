@@ -62,7 +62,6 @@ public class Agent2 implements Agent {
 					propositionsInteraction = buildPropositionsInteraction(activatedComposites);
 					propositionsAction = buildPropositionsAction(propositionsInteraction);
 					action = getMaxAction(propositionsAction);
-					System.out.println(action);
 				}
 			}
 		}
@@ -140,9 +139,8 @@ public class Agent2 implements Agent {
 	private List<Proposition> buildPropositionsInteraction(List<InteractionComposite> composites) {
 		List<Proposition> propositions = new ArrayList<>();
 		for(InteractionComposite compo : composites) {
-			for(Interaction interaction : compo.interactions()) {
+			for(Interaction interaction : compo.interactions())
 				propositions.add(new Proposition(interaction.getAction(), compo.getWeight() * interaction.getValue()));
-			}
 		}
 		return propositions;
 	}
@@ -152,11 +150,10 @@ public class Agent2 implements Agent {
 		Action[] actions = Action.values();
 		for(Action action : actions) {
 			Proposition proposition = new Proposition(action, 0);
-			int n = getFullProclivityAction(propositions, action);
+			int n = getFullProclivityAction(propositionsInteraction, action);
 			proposition.setProclivity(n);
 			propositions.add(proposition);
 		}
-		System.out.println(propositions);
 		return propositions;
 	}
 	
