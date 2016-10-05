@@ -73,4 +73,32 @@ Deux agents :
 
 [Agent 2](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/environment/Agent2.java) : second agent pour le quatrièment environnement.
 
+## Compilation & Exécution
+
+Le répertoire dispose d'un fichier ant pour la compilation et l'exécution du programme en ligne de commande.
+
+### Compilation
+
+Pour compiler, uniquement, le programme :
+
+	ant build
+
+### Exécution
+
+Pour compiler le programme et exécuter l'environnement 1 :
+	
+	ant run-env1
+
+Pour compiler le programme et exécuter l'environnement 2 :
+
+	ant run-env2
+	
+Pour compiler le programme et exécuter l'environnement 3 :
+
+	ant run-env3
+
+Pour compiler le programme et exécuter l'environnement 4 :
+
+	ant run-env4
+	
 ## Traces & Résultats
