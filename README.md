@@ -147,3 +147,29 @@ Pour compiler le programme et exécuter l'Environnement 4 :
 |          8 | CIRCLE   | GREEN    |      1 |              |
 |          9 | TRIANGLE | GREEN    |      1 |              |
 |         10 | CIRCLE   | GREEN    |      1 |              |
+
+### Environnement 4
+
+| Itération  | Action   | Resultat | Valeur | Memorisation |
+| ---------- | -------- | -------- | ------ | ------------ |
+|          1 | TRIANGLE | GREEN    |      1 |              |
+|          2 | CIRCLE   | WHITE    |      0 | { i12, i21 } |
+|          3 | TRIANGLE | GREEN    |      1 | { i21, i12 } |
+|          4 | TRIANGLE | GREEN    |      1 | { i12, i12 } |
+|          5 | TRIANGLE | GREEN    |      1 |              |
+|          6 | TRIANGLE | GREEN    |      1 |              |
+|          7 | TRIANGLE | GREEN    |      1 |              |
+|          8 | TRIANGLE | GREEN    |      1 |              |
+|          9 | TRIANGLE | GREEN    |      1 |              |
+|         10 | TRIANGLE | GREEN    |      1 |              |
+|         11 | TRIANGLE | WHITE    |      0 | { i12, i11 } |
+|         12 | CIRCLE   | GREEN    |      1 | { i11, i22 } |
+|         13 | CIRCLE   | GREEN    |      1 | { i22, i22 } |
+|         14 | CIRCLE   | GREEN    |      1 |              |
+|         15 | CIRCLE   | GREEN    |      1 |              |
+|         16 | CIRCLE   | GREEN    |      1 |              |
+|         17 | CIRCLE   | GREEN    |      1 |              |
+|         18 | CIRCLE   | GREEN    |      1 |              |
+|         19 | CIRCLE   | GREEN    |      1 |              |
+|         20 | CIRCLE   | GREEN    |      1 |              |
+
