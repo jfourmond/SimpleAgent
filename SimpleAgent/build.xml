@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project name="Simple Agent" default="build" basedir=".">
+    <!-- PROPERTIES -->
+    <property name="project.name" value="Simple Agent" />
+    <property name="project.version" value="1.0" />
+
+    <property name="src.dir" value="src"/>
+    <property name="bin.dir" value="bin" />
+
+    <property name="target" value="1.8"/>
+	<property name="source" value="1.8"/>
+
+    <!-- PATHS -->
+    <path id="src.build.classpath">
+		<pathelement location="${bin.dir}" />
+	</path>
+
+    <path id="run.classpath">
+		<pathelement path="${bin.dir}" />
+	</path>
+
+    <!-- TARGETS -->
+        <!-- CLEAN -->
+    <target name="clean" description="clean project">
+		<delete dir="${bin.dir}"/>
+	</target>
+
+        <!-- INIT -->
+    <target name="init" description="create directory-ies">
+        <mkdir dir="${bin.dir}" />
+        <mkdir dir="${src.dir}" />
+    </target>
+
+        <!-- BUILD -->
+    <target name="build" depends="init" description="source compilation">
+        <javac srcdir="${src.dir}" destdir="${bin.dir}" fork="true"
+            classpathref="src.build.classpath" includeantruntime="false">
+        </javac>
+    </target>
+
+        <!-- RUN ENVIRONMENT 1-->
+    <target name="run-env1" depends="build">
+        <java classname="main.MainEnv1" fork="true"
+            classpathref="run.classpath">
+        </java>
+    </target>
+
+		<!-- RUN ENVIRONMENT 2 -->
+	<target name="run-env2" depends="build">
+        <java classname="main.MainEnv2" fork="true"
+            classpathref="run.classpath">
+        </java>
+    </target>
+
+		<!-- RUN ENVIRONMENT 3 -->
+	<target name="run-env3" depends="build">
+        <java classname="main.MainEnv3" fork="true"
+            classpathref="run.classpath">
+        </java>
+    </target>
+
+		<!-- RUN ENVIRONMENT 4 -->
+	<target name="run-env4" depends="build">
+        <java classname="main.MainEnv4" fork="true"
+            classpathref="run.classpath">
+        </java>
+    </target>
+
+
+
+</project>
