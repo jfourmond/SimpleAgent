@@ -119,3 +119,16 @@ Pour compiler le programme et exécuter l'Environnement 4 :
 |         10 | TRIANGLE | GREEN    |      1 |
 
 ### Environnement 2
+
+| Itération  | Action   | Resultat | Valeur |
+| ---------- | -------- | -------- | ------ |
+|          1 | TRIANGLE | WHITE    |     -1 |
+|          2 | CIRCLE   | GREEN    |      1 |
+|          3 | TRIANGLE | WHITE    |     -1 |
+|          4 | CIRCLE   | GREEN    |      1 |
+|          5 | CIRCLE   | GREEN    |      1 |
+|          6 | CIRCLE   | GREEN    |      1 |
+|          7 | CIRCLE   | GREEN    |      1 |
+|          8 | CIRCLE   | GREEN    |      1 |
+|          9 | CIRCLE   | GREEN    |      1 |
+|         10 | CIRCLE   | GREEN    |      1 |
