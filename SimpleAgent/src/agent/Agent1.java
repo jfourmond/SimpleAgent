@@ -52,19 +52,18 @@ public class Agent1 implements Agent {
 				actionCount++;
 			} else {
 				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
-				if(activatedComposites.isEmpty()) {
+				if(activatedComposites.isEmpty())
 					// Aucune interaction ne convient donc...
 					action = randAction();
-				} else {
+				else {
 					for(InteractionComposite compo : activatedComposites) {
 						Interaction post = compo.getPostInteraction();
 						if(post.getValue() > 0) action = post.getAction();
 					}
 					
-					if(action == null) {
+					if(action == null)
 						// Aucune interaction ne convient donc...
 						action = randAction();
-					}
 				}
 			}
 		}

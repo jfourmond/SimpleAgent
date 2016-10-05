@@ -24,6 +24,7 @@ public class MainEnv2 {
 		Action action = null;
 		Interaction interaction = null;
 		
+		System.out.println("Environnement 2 & Agent 1 :\n");
 		for(int i=0 ; i<10 ; i++) {
 			action = agent.chooseAction(result);
 			result = env.giveResult(action);

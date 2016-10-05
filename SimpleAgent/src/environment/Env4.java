@@ -45,8 +45,6 @@ public class Env4 implements Environment {
 					return null;
 			}
 		}
-		// Incrémentation dans l'environnement ?
-		// TODO step++;
 	}
 	
 }

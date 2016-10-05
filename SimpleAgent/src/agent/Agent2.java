@@ -54,7 +54,6 @@ public class Agent2 implements Agent {
 				List<InteractionComposite> activatedComposites = activatedInteractionComposite(lastInteraction);
 				if(activatedComposites.isEmpty()) {
 					// Aucune interaction ne convient donc...
-					System.out.println("Pas activée...");
 					action = randAction();
 				} else {
 					List<Proposition> propositionsInteraction;

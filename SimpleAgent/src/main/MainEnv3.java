@@ -25,6 +25,8 @@ public class MainEnv3 {
 		Action action = null;
 		Interaction interaction = null;
 		InteractionComposite compo = null;
+		
+		System.out.println("Environnement 3 & Agent 1 :\n");
 		for(int i=0 ; i<10 ; i++) {
 			action = agent.chooseAction(result);
 			result = env.giveResult(action);
@@ -35,6 +37,7 @@ public class MainEnv3 {
 			compo = agent.memorize(interaction);
 			
 			if(compo != null) System.out.println(interaction + "\t-\tMemorisation de " + compo);
+			else System.out.println(interaction);
 		}
 	}
 }
