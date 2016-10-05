@@ -85,20 +85,37 @@ Pour compiler, uniquement, le programme :
 
 ### Exécution
 
-Pour compiler le programme et exécuter l'environnement 1 :
+Pour compiler le programme et exécuter l'Environnement 1 :
 	
 	ant run-env1
 
-Pour compiler le programme et exécuter l'environnement 2 :
+Pour compiler le programme et exécuter l'Environnement 2 :
 
 	ant run-env2
 	
-Pour compiler le programme et exécuter l'environnement 3 :
+Pour compiler le programme et exécuter l'Environnement 3 :
 
 	ant run-env3
 
-Pour compiler le programme et exécuter l'environnement 4 :
+Pour compiler le programme et exécuter l'Environnement 4 :
 
 	ant run-env4
 	
 ## Traces & Résultats
+
+### Environnement 1
+
+| Itération  | Action   | Resultat | Valeur |
+| ---------- | -------- | -------- | ------ |
+|          1 | TRIANGLE | GREEN    |      1 |
+|          2 | CIRCLE   | WHITE    |     -1 |
+|          3 | TRIANGLE | GREEN    |      1 |
+|          4 | TRIANGLE | GREEN    |      1 |
+|          5 | TRIANGLE | GREEN    |      1 |
+|          6 | TRIANGLE | GREEN    |      1 |
+|          7 | TRIANGLE | GREEN    |      1 |
+|          8 | TRIANGLE | GREEN    |      1 |
+|          9 | TRIANGLE | GREEN    |      1 |
+|         10 | TRIANGLE | GREEN    |      1 |
+
+### Environnement 2
