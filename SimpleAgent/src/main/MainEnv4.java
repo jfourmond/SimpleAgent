@@ -4,7 +4,7 @@ import action.Action;
 import agent.Agent;
 import agent.Agent2;
 import coupling.Coupling;
-import coupling.Coupling1;
+import coupling.Coupling3;
 import environment.Env4;
 import environment.Environment;
 import interaction.Interaction;
@@ -19,7 +19,7 @@ public class MainEnv4 {
 	public static void main(String[] args) {
 		Agent agent = new Agent2();
 		Environment env = new Env4();
-		Coupling cp = new Coupling1();
+		Coupling cp = new Coupling3();
 		
 		Result result = null;
 		Action action = null;
