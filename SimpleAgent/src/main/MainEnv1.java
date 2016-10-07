@@ -18,7 +18,7 @@ public class MainEnv1 {
 	public static void main(String[] args) {
 		Agent agent = new Agent1();
 		Environment env = new Env1();
-		Coupling cp = new Coupling1();
+		Coupling cp = new Coupling1();	// Coupling2()	// Coupling3()
 		
 		Result result = null;
 		Action action = null;

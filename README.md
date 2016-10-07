@@ -63,7 +63,7 @@ Quatre environnements :
 - v(i11) = v(i12) = -1, v(i21) = v(i22) = 1
 
 [Coupling 3](https://github.com/jfourmond/SimpleAgent/blob/master/SimpleAgent/src/coupling/Coupling3.java) :
-- gestion de l'alternance
+- v(i12) = v(22) = 1, v(i11) = v(i21) = -1
 
 ### Agent
 
@@ -100,76 +100,3 @@ Pour compiler le programme et exécuter l'Environnement 3 :
 Pour compiler le programme et exécuter l'Environnement 4 :
 
 	ant run-env4
-	
-## Traces & Résultats
-
-### Environnement 1
-
-| Itération  | Action   | Resultat | Valeur |
-| ---------- | -------- | -------- | ------ |
-|          1 | TRIANGLE | GREEN    |      1 |
-|          2 | CIRCLE   | WHITE    |     -1 |
-|          3 | TRIANGLE | GREEN    |      1 |
-|          4 | TRIANGLE | GREEN    |      1 |
-|          5 | TRIANGLE | GREEN    |      1 |
-|          6 | TRIANGLE | GREEN    |      1 |
-|          7 | TRIANGLE | GREEN    |      1 |
-|          8 | TRIANGLE | GREEN    |      1 |
-|          9 | TRIANGLE | GREEN    |      1 |
-|         10 | TRIANGLE | GREEN    |      1 |
-
-### Environnement 2
-
-| Itération  | Action   | Resultat | Valeur |
-| ---------- | -------- | -------- | ------ |
-|          1 | TRIANGLE | WHITE    |     -1 |
-|          2 | CIRCLE   | GREEN    |      1 |
-|          3 | TRIANGLE | WHITE    |     -1 |
-|          4 | CIRCLE   | GREEN    |      1 |
-|          5 | CIRCLE   | GREEN    |      1 |
-|          6 | CIRCLE   | GREEN    |      1 |
-|          7 | CIRCLE   | GREEN    |      1 |
-|          8 | CIRCLE   | GREEN    |      1 |
-|          9 | CIRCLE   | GREEN    |      1 |
-|         10 | CIRCLE   | GREEN    |      1 |
-
-### Environnement 3
-
-| Itération  | Action   | Resultat | Valeur | Memorisation |
-| ---------- | -------- | -------- | ------ | ------------ |
-|          1 | TRIANGLE | GREEN    |      1 |              |
-|          2 | CIRCLE   | GREEN    |      1 | { i12, i21 } |
-|          3 | TRIANGLE | GREEN    |      1 | { i21, i12 } |
-|          4 | CIRCLE   | GREEN    |      1 |              |
-|          5 | TRIANGLE | GREEN    |      1 |              |
-|          6 | CIRCLE   | GREEN    |      1 |              |
-|          7 | TRIANGLE | GREEN    |      1 |              |
-|          8 | CIRCLE   | GREEN    |      1 |              |
-|          9 | TRIANGLE | GREEN    |      1 |              |
-|         10 | CIRCLE   | GREEN    |      1 |              |
-
-### Environnement 4
-
-| Itération  | Action   | Resultat | Valeur | Memorisation |
-| ---------- | -------- | -------- | ------ | ------------ |
-|          1 | TRIANGLE | GREEN    |      1 |              |
-|          2 | CIRCLE   | WHITE    |      0 | { i12, i21 } |
-|          3 | TRIANGLE | GREEN    |      1 | { i21, i12 } |
-|          4 | TRIANGLE | GREEN    |      1 | { i12, i12 } |
-|          5 | TRIANGLE | GREEN    |      1 |              |
-|          6 | TRIANGLE | GREEN    |      1 |              |
-|          7 | TRIANGLE | GREEN    |      1 |              |
-|          8 | TRIANGLE | GREEN    |      1 |              |
-|          9 | TRIANGLE | GREEN    |      1 |              |
-|         10 | TRIANGLE | GREEN    |      1 |              |
-|         11 | TRIANGLE | WHITE    |      0 | { i12, i11 } |
-|         12 | CIRCLE   | GREEN    |      1 | { i11, i22 } |
-|         13 | CIRCLE   | GREEN    |      1 | { i22, i22 } |
-|         14 | CIRCLE   | GREEN    |      1 |              |
-|         15 | CIRCLE   | GREEN    |      1 |              |
-|         16 | CIRCLE   | GREEN    |      1 |              |
-|         17 | CIRCLE   | GREEN    |      1 |              |
-|         18 | CIRCLE   | GREEN    |      1 |              |
-|         19 | CIRCLE   | GREEN    |      1 |              |
-|         20 | CIRCLE   | GREEN    |      1 |              |
-
