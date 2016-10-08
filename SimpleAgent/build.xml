@@ -45,40 +45,10 @@
             classpathref="run.classpath">
 			<!-- Argument Agent -->
 			<arg value="${arg0}"/>
+			<!-- Argument Environment -->
 		    <arg value="${arg1}"/>
+			<!-- Argument Coupling -->
 		    <arg value="${arg2}"/>
-        </java>
-    </target>
-
-        <!-- RUN ENVIRONMENT 1-->
-    <target name="run-env1" depends="build">
-        <java classname="main.MainEnv" fork="true"
-            classpathref="run.classpath">
-			<!-- Argument Agent -->
-			<arg value="1"/>
-		    <arg value="-arg2"/>
-		    <arg value="bar"/>
-        </java>
-    </target>
-
-		<!-- RUN ENVIRONMENT 2 -->
-	<target name="run-env2" depends="build">
-        <java classname="main.MainEnv2" fork="true"
-            classpathref="run.classpath">
-        </java>
-    </target>
-
-		<!-- RUN ENVIRONMENT 3 -->
-	<target name="run-env3" depends="build">
-        <java classname="main.MainEnv3" fork="true"
-            classpathref="run.classpath">
-        </java>
-    </target>
-
-		<!-- RUN ENVIRONMENT 4 -->
-	<target name="run-env4" depends="build">
-        <java classname="main.MainEnv4" fork="true"
-            classpathref="run.classpath">
         </java>
     </target>
 </project>
