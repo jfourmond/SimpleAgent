@@ -85,18 +85,11 @@ Pour compiler, uniquement, le programme :
 
 ### Exécution
 
-Pour compiler le programme et exécuter l'Environnement 1 :
-	
-	ant run-env1
+Le programme s'exécute avec trois arguments (entiers) en ligne de commande :
+- premier : le numéro d'Agent (**1** ou **2**)
+- second : le numéro d'Environnement (**1**, **2**, **3** ou **4**)
+- troisième : le numéro du Système Motivationnel (**1**, **2** ou **3**)
 
-Pour compiler le programme et exécuter l'Environnement 2 :
+Avec **Ant**,
 
-	ant run-env2
-	
-Pour compiler le programme et exécuter l'Environnement 3 :
-
-	ant run-env3
-
-Pour compiler le programme et exécuter l'Environnement 4 :
-
-	ant run-env4
+	ant run -Darg0=[numAgent] -Darg1=[numEnvironment] -Darg2=[numCoupling]

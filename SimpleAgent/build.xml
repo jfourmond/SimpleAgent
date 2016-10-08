@@ -39,10 +39,25 @@
         </javac>
     </target>
 
+	<!-- RUN -->
+	<target name="run" depends="build">
+        <java classname="main.MainEnv" fork="true"
+            classpathref="run.classpath">
+			<!-- Argument Agent -->
+			<arg value="${arg0}"/>
+		    <arg value="${arg1}"/>
+		    <arg value="${arg2}"/>
+        </java>
+    </target>
+
         <!-- RUN ENVIRONMENT 1-->
     <target name="run-env1" depends="build">
-        <java classname="main.MainEnv1" fork="true"
+        <java classname="main.MainEnv" fork="true"
             classpathref="run.classpath">
+			<!-- Argument Agent -->
+			<arg value="1"/>
+		    <arg value="-arg2"/>
+		    <arg value="bar"/>
         </java>
     </target>
 

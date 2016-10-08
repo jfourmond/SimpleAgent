@@ -5,14 +5,14 @@ import result.Result;
 
 /**
  * Environnement 4
- * Se comporte comme {@link Env1} pendant les 10 premiers cycles, puis comme {@link Env2}
+ * Se comporte comme {@link Environment1} pendant les 10 premiers cycles, puis comme {@link Environment2}
  * @author Jérôme
  */
-public class Env4 implements Environment {
+public class Environment4 implements Environment {
 	private int step;
 	
 	//	CONSTRUCTEURS
-	public Env4() {
+	public Environment4() {
 		super();
 		step = 0;
 	}
