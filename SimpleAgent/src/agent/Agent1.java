@@ -132,8 +132,11 @@ public class Agent1 implements Agent {
 		for(InteractionComposite IC : memories) {
 			Interaction preInteraction = IC.getPreInteraction();
 			Interaction postInteraction = IC.getPostInteraction();
-			if(preInteraction.getAction() == preAction && postInteraction.getAction() == postAction)
-				return true;
+			if(preInteraction.getAction() == preAction && postInteraction.getAction() == postAction) {
+				if(preAction == postAction && !preInteraction.equals(postInteraction))
+					return false;
+				else return true;
+			}
 		}
 		return false;
 	}

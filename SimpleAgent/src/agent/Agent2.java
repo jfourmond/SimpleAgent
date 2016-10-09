@@ -135,6 +135,11 @@ public class Agent2 implements Agent {
 		return false;
 	}
 	
+	/**
+	 * Construit une {@link List} de {@link Proposition} à partir d'une {@link List} d'{@link InteractionComposite}.
+	 * @param composites : la {@link List} d'{@link InteractionComposite}
+	 * @return une {@link List} de {@link Proposition}
+	 */
 	private List<Proposition> buildPropositionsInteraction(List<InteractionComposite> composites) {
 		List<Proposition> propositions = new ArrayList<>();
 		for(InteractionComposite compo : composites) {
@@ -144,6 +149,11 @@ public class Agent2 implements Agent {
 		return propositions;
 	}
 	
+	/**
+	 * Construit une {@link List} de {@link Proposition} à partir d'une {@link List} de {@link Proposition} basée sur des {@link Interaction}s
+	 * @param propositionsInteraction : {@link List} de {@link Proposition} basée sur des {@link Interaction}s
+	 * @return une {@link List} de {@link Proposition}
+	 */
 	private List<Proposition> buildPropositionsAction(List<Proposition> propositionsInteraction) {
 		List<Proposition> propositions = new ArrayList<>();
 		Action[] actions = Action.values();
@@ -156,6 +166,12 @@ public class Agent2 implements Agent {
 		return propositions;
 	}
 	
+	/**
+	 * Retourne la valeur maximal de la propension de l'action passée en paramètre à partir de la {@link List} de {@link Proposition} passée en paramètre
+	 * @param propositions : {@link List} de {@link Proposition} à parcourir
+	 * @param action : {@link Action} dont la méthode calcule la propension
+	 * @return la propension de l'action
+	 */
 	private int getFullProclivityAction(List<Proposition> propositions, Action action) {
 		int n = 0;
 		for(Proposition proposition : propositions) {
@@ -165,6 +181,11 @@ public class Agent2 implements Agent {
 		return n;
 	}
 
+	/**
+	 * Retourne l'{@link Action} dont la propension est la plus élevée dans la {@link List} de {@link Proposition} passée en paramètre
+	 * @param propositionsAction : {@link List} de {@link Proposition}
+	 * @return l'{@link Action} dont la propension est la plus élevée
+	 */
 	private Action getMaxAction(List<Proposition> propositionsAction) {
 		Action action = null;
 		if(!propositionsAction.isEmpty()) {
