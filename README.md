@@ -85,11 +85,12 @@ Pour compiler, uniquement, le programme :
 
 ### Exécution
 
-Le programme s'exécute avec trois arguments (entiers) en ligne de commande :
+Le programme s'exécute avec trois arguments (entiers) nécessaires, et 1 optionnel, en ligne de commande :
 - premier : le numéro d'Agent (**1** ou **2**)
 - second : le numéro d'Environnement (**1**, **2**, **3** ou **4**)
 - troisième : le numéro du Système Motivationnel (**1**, **2** ou **3**)
+- quatrième : le nombre d'itération à effectuer
 
 Avec **Ant**,
 
-	ant run -Darg0=[numAgent] -Darg1=[numEnvironment] -Darg2=[numCoupling]
+	ant run -Darg0=[numAgent] -Darg1=[numEnvironment] -Darg2=[numCoupling] (-Darg3=[nb_iteration])

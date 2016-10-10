@@ -49,6 +49,8 @@
 		    <arg value="${arg1}"/>
 			<!-- Argument Coupling -->
 		    <arg value="${arg2}"/>
+			<!-- Argument Step -->
+			<arg value="${arg3}" />
         </java>
     </target>
 </project>
