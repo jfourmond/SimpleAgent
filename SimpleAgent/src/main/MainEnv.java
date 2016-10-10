@@ -68,8 +68,10 @@ public class MainEnv {
 			
 			compo = agent.memorize(interaction);
 			
-			if(compo != null) System.out.println(interaction + "\t-\tMemorisation de " + compo);
-			else System.out.println(interaction);
+			if(compo != null)
+				System.out.println("["+ (i+1) + "] " + interaction + "\t-\tMemorisation de " + compo);
+			else
+				System.out.println("["+ (i+1) + "] " + interaction);
 		}
 	}
 	
