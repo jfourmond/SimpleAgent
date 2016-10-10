@@ -26,25 +26,32 @@ public class Environment4 implements Environment {
 	//	METHODES
 	@Override
 	public Result giveResult(Action A) {
+		Result R;
 		if(step < 10) {
 			switch(A) {
 				case TRIANGLE:
-					return Result.GREEN;
+					R = Result.WHITE;
+					break;
 				case CIRCLE:
-					return Result.WHITE;
+					R = Result.GREEN;
+					break;
 				default:
 					return null;
 			}
 		} else {
 			switch(A) {
-				case CIRCLE:
-					return Result.GREEN;
 				case TRIANGLE:
-					return Result.WHITE;
+					R = Result.GREEN;
+					break;
+				case CIRCLE:
+					R = Result.WHITE;
+					break;
 				default:
 					return null;
 			}
 		}
+		step++;
+		return R;
 	}
 	
 }
